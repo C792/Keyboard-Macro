@@ -10,7 +10,7 @@
 using namespace std;
 
 string testcase = "`1234567890!@#$%^&*()-=qwertyuiop[]\\asdfghjkl;\'zxcvbnm,./~_+{}|:\"<>?";
-string qwerty_ko = "¤²Q¤¸W¤§E¤¡R¤µT¤ËY¤ÅU¤ÁI¤ÀO¤ÄP¤±A¤¤S¤·D¤©F¤¾G¤ÇH¤ÃJ¤¿K¤ÓL¤»Z¤¼X¤ºC¤½V¤ĞB¤ÌN¤ÑM";
+string qwerty_ko = "ã…‚Qã…ˆWã„·Eã„±Rã……Tã…›Yã…•Uã…‘Iã…Oã…”Pã…Aã„´Sã…‡Dã„¹Fã…Gã…—Hã…“Jã…Kã…£Lã…‹Zã…ŒXã…ŠCã…Vã… Bã…œNã…¡M";
 string arr = "Thank you. I\'m honored to be with you today for your commencement from one of the finest universities in the world. Truth be told, I never graduated from college and this is the closest I\'ve ever gotten to a college graduation. Today I want to tell you three stories from my life. That\'s it. No big deal. Just three stories.";
 //Steve Jobs Stanford Speech
 
@@ -94,12 +94,12 @@ char convert(char a) {
         PSH;
         return VK_OEM_6;
     case '\'':
-    case '¡¯': 
-    case '¡®':
+    case 'Â¨': 
+    case 'ï½€':
         return VK_OEM_7;
     case '\"':
-    case '¡°':
-    case '¡±':
+    case 'ï¼¾':
+    case 'ï¿£':
         PSH;
         return VK_OEM_7;
     case ',':
@@ -144,82 +144,82 @@ char convert(char a) {
         return '0';
     case '\n':
         return VK_RETURN;
-    case '¤²':
+    case 'ã’':
         EH;
         return 'Q';
-    case '¤¸':
+    case 'ã˜':
         EH;
         return 'W';
-    case '¤§':
+    case 'ã‡':
         EH;
         return 'E';
-    case '¤¡':
+    case 'ã':
         EH;
         return 'R';
-    case '¤µ':
+    case 'ã•':
         EH;
         return 'T';
-    case '¤Ë':
+    case 'ã«':
         EH;
         return 'Y';
-    case '¤Å':
+    case 'ã¥':
         EH;
         return 'U';
-    case '¤Á':
+    case 'ã¡':
         EH;
         return 'I';
-    case '¤À':
+    case 'ã ':
         EH;
         return 'O';
-    case '¤Ä':
+    case 'ã¤':
         EH;
         return 'P';
-    case '¤±':
+    case 'ã‘':
         EH;
         return 'A';
-    case '¤¤':
+    case 'ã„':
         EH;
         return 'S';
-    case '¤·':
+    case 'ã—':
         EH;
         return 'D';
-    case '¤©':
+    case 'ã‰':
         EH;
         return 'F';
-    case '¤¾':
+    case 'ã':
         EH;
         return 'G';
-    case '¤Ç':
+    case 'ã§':
         EH;
         return 'H';
-    case '¤Ã':
+    case 'ã£':
         EH;
         return 'J';
-    case '¤¿':
+    case 'ãŸ':
         EH;
         return 'K';
-    case '¤Ó':
+    case 'ã³':
         EH;
         return 'L';
-    case '¤»':
+    case 'ã›':
         EH;
         return 'Z';
-    case '¤¼':
+    case 'ãœ':
         EH;
         return 'X';
-    case '¤º':
+    case 'ãš':
         EH;
         return 'C';
-    case '¤½':
+    case 'ã':
         EH;
         return 'V';
-    case '¤Ğ':
+    case 'ã°':
         EH;
         return 'B';
-    case '¤Ì':
+    case 'ã¬':
         EH;
         return 'N';
-    case '¤Ñ':
+    case 'ã±':
         EH;
         return 'M';
     }
