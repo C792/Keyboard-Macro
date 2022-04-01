@@ -144,82 +144,82 @@ char convert(char a) {
         return '0';
     case '\n':
         return VK_RETURN;
-    case 'げ':
+    case 'ㅂ':
         EH;
         return 'Q';
-    case 'じ':
+    case 'ㅈ':
         EH;
         return 'W';
-    case 'ぇ':
+    case 'ㄷ':
         EH;
         return 'E';
-    case 'ぁ':
+    case 'ㄱ':
         EH;
         return 'R';
-    case 'さ':
+    case 'ㅅ':
         EH;
         return 'T';
-    case 'に':
+    case 'ㅛ':
         EH;
         return 'Y';
-    case 'づ':
+    case 'ㅕ':
         EH;
         return 'U';
-    case 'ち':
+    case 'ㅑ':
         EH;
         return 'I';
-    case 'だ':
+    case 'ㅐ':
         EH;
         return 'O';
-    case 'つ':
+    case 'ㅔ':
         EH;
         return 'P';
-    case 'け':
+    case 'ㅁ':
         EH;
         return 'A';
-    case 'い':
+    case 'ㄴ':
         EH;
         return 'S';
-    case 'し':
+    case 'ㅇ':
         EH;
         return 'D';
-    case 'ぉ':
+    case 'ㄹ':
         EH;
         return 'F';
-    case 'ぞ':
+    case 'ㅎ':
         EH;
         return 'G';
-    case 'で':
+    case 'ㅗ':
         EH;
         return 'H';
-    case 'っ':
+    case 'ㅓ':
         EH;
         return 'J';
-    case 'た':
+    case 'ㅏ':
         EH;
         return 'K';
-    case 'び':
+    case 'ㅣ':
         EH;
         return 'L';
-    case 'せ':
+    case ㅋ':
         EH;
         return 'Z';
-    case 'ぜ':
+    case 'ㅌ':
         EH;
         return 'X';
-    case 'ず':
+    case 'ㅊ':
         EH;
         return 'C';
-    case 'そ':
+    case 'ㅍ':
         EH;
         return 'V';
-    case 'ば':
+    case 'ㅠ':
         EH;
         return 'B';
-    case 'ぬ':
+    case 'ㅜ':
         EH;
         return 'N';
-    case 'ぱ':
+    case 'ㅡ':
         EH;
         return 'M';
     }
