@@ -1,7 +1,12 @@
 #include <iostream>
+#include <fstream>
+#include <sstream>
+#include <istream>
+#include <ostream>
 #include <windows.h>
 #include <string>
 #include <algorithm>
+#include <conio.h>
 
 #define PSH presskey(VK_SHIFT); SHIFT++
 #define EH presskey(VK_HANGUL); HANGUL++
@@ -10,11 +15,10 @@
 using namespace std;
 
 string testcase = "`1234567890!@#$%^&*()-=qwertyuiop[]\\asdfghjkl;\'zxcvbnm,./~_+{}|:\"<>?";
-string qwerty_ko = "ㅂQㅈWㄷEㄱRㅅTㅛYㅕUㅑIㅐOㅔPㅁAㄴSㅇDㄹFㅎGㅗHㅓJㅏKㅣLㅋZㅌXㅊCㅍVㅠBㅜNㅡM";
 string arr = "Thank you. I\'m honored to be with you today for your commencement from one of the finest universities in the world. Truth be told, I never graduated from college and this is the closest I\'ve ever gotten to a college graduation. Today I want to tell you three stories from my life. That\'s it. No big deal. Just three stories.";
 //Steve Jobs Stanford Speech
 
-int CTRL,SHIFT,HANGUL,ACTRL,ASHIFT,AALT;
+int CTRL, SHIFT, HANGUL, ACTRL, ASHIFT, AALT;
 void KeyInput(char c) {
     INPUT ip;
     ip.type = INPUT_KEYBOARD;
@@ -94,12 +98,8 @@ char convert(char a) {
         PSH;
         return VK_OEM_6;
     case '\'':
-    case '¨': 
-    case '｀':
         return VK_OEM_7;
     case '\"':
-    case '＾':
-    case '￣':
         PSH;
         return VK_OEM_7;
     case ',':
@@ -144,84 +144,6 @@ char convert(char a) {
         return '0';
     case '\n':
         return VK_RETURN;
-    case 'ㅂ':
-        EH;
-        return 'Q';
-    case 'ㅈ':
-        EH;
-        return 'W';
-    case 'ㄷ':
-        EH;
-        return 'E';
-    case 'ㄱ':
-        EH;
-        return 'R';
-    case 'ㅅ':
-        EH;
-        return 'T';
-    case 'ㅛ':
-        EH;
-        return 'Y';
-    case 'ㅕ':
-        EH;
-        return 'U';
-    case 'ㅑ':
-        EH;
-        return 'I';
-    case 'ㅐ':
-        EH;
-        return 'O';
-    case 'ㅔ':
-        EH;
-        return 'P';
-    case 'ㅁ':
-        EH;
-        return 'A';
-    case 'ㄴ':
-        EH;
-        return 'S';
-    case 'ㅇ':
-        EH;
-        return 'D';
-    case 'ㄹ':
-        EH;
-        return 'F';
-    case 'ㅎ':
-        EH;
-        return 'G';
-    case 'ㅗ':
-        EH;
-        return 'H';
-    case 'ㅓ':
-        EH;
-        return 'J';
-    case 'ㅏ':
-        EH;
-        return 'K';
-    case 'ㅣ':
-        EH;
-        return 'L';
-    case 'ㅋ':
-        EH;
-        return 'Z';
-    case 'ㅌ':
-        EH;
-        return 'X';
-    case 'ㅊ':
-        EH;
-        return 'C';
-    case 'ㅍ':
-        EH;
-        return 'V';
-    case 'ㅠ':
-        EH;
-        return 'B';
-    case 'ㅜ':
-        EH;
-        return 'N';
-    case 'ㅡ':
-        EH;
-        return 'M';
     }
     if (a >= 'a' && a <= 'z') {
         PSH;
@@ -233,7 +155,7 @@ char convert(char a) {
 int ri;
 void ReplaceKey(int in) {
     KeyInput(8);
-    char a = arr[ri];
+    //char a = arr[ri];
     char a = arr[ri % (arr.length() + 1)];
     if (ri % (arr.length() + 1) == arr.length()) KeyInput(32);
     else {
@@ -246,7 +168,7 @@ void ReplaceKey(int in) {
     ri++;
 }
 
-bool program_initalizer = true;
+bool program_initalizer = false;
 void KeyListen() {
     if (program_initalizer) {
         for (int c = 32; c < 'Z' + 2; c++) {
@@ -271,15 +193,39 @@ void KeyListen() {
     }
     return;
 }
+
+bool ReadArr() {
+    ifstream readFile;
+    string inputarr;
+    readFile.open("macro.txt");
+    if (readFile.is_open())
+    {
+        while (!readFile.eof())
+        {
+            getline(readFile, inputarr);
+            arr.append(inputarr);
+            arr.push_back('\n');
+        }
+        readFile.close();
+        return true;
+    }
+    return false;
+}
+
 int main() {
     bool WindowShow = true;
     HWND window;
     AllocConsole();
     window = FindWindowA("ConsoleWindowClass", NULL);
     ShowWindow(window, WindowShow);
+    if (!ReadArr()) {
+        cout << "Cannot find \"macro.txt\".\nPlease check if the macro.txt file exists in the current directory." << endl << endl << "Press any key to close...";
+        _getch();
+        return 0;
+    }
     for_each(arr.begin(), arr.end(), [](char& c) {
         if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) c = c ^ 32;
-    });
+        });
     while (1) {
         KeyListen();
         if (GetAsyncKeyState(VK_F6) == CLICK_EVENT) {
