@@ -201,7 +201,7 @@ char convert(char a) {
     case 'ㅣ':
         EH;
         return 'L';
-    case ㅋ':
+    case 'ㅋ':
         EH;
         return 'Z';
     case 'ㅌ':
