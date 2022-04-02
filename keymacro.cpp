@@ -4,6 +4,7 @@
 #include <istream>
 #include <ostream>
 #include <windows.h>
+#include <WinUser.h>
 #include <string>
 #include <algorithm>
 #include <conio.h>
@@ -15,7 +16,7 @@
 using namespace std;
 
 string testcase = "`1234567890!@#$%^&*()-=qwertyuiop[]\\asdfghjkl;\'zxcvbnm,./~_+{}|:\"<>?";
-string arr = "Thank you. I\'m honored to be with you today for your commencement from one of the finest universities in the world. Truth be told, I never graduated from college and this is the closest I\'ve ever gotten to a college graduation. Today I want to tell you three stories from my life. That\'s it. No big deal. Just three stories.";
+string arr;// = "Thank you. I\'m honored to be with you today for your commencement from one of the finest universities in the world. Truth be told, I never graduated from college and this is the closest I\'ve ever gotten to a college graduation. Today I want to tell you three stories from my life. That\'s it. No big deal. Just three stories.";
 //Steve Jobs Stanford Speech
 
 int CTRL, SHIFT, HANGUL, ACTRL, ASHIFT, AALT;
@@ -177,16 +178,17 @@ void KeyListen() {
         }
         for (int i = VK_OEM_1; i <= VK_OEM_3; i++) onKP(i);
         for (int i = VK_OEM_4; i < VK_OEM_8; i++) onKP(i);
-        if (GetAsyncKeyState(VK_F7) == CLICK_EVENT) {
+        if (GetAsyncKeyState(VK_F9) == CLICK_EVENT) {
             program_initalizer = false;
             cout << "OFF" << endl;
         }
+        if (GetAsyncKeyState(VK_BACK) == CLICK_EVENT) ri--;
         /*for (int i = VK_SHIFT; i < VK_MENU; i++)
             if (GetAsyncKeyState(i) == CLICK_EVENT)
                 releasekey(i);*/
     }
     else {
-        if (GetAsyncKeyState(VK_F7) == CLICK_EVENT) {
+        if (GetAsyncKeyState(VK_F9) == CLICK_EVENT) {
             program_initalizer = true;
             cout << "ON" << endl;
         }
@@ -211,7 +213,7 @@ bool ReadArr() {
     }
     return false;
 }
-
+int Index;
 int main() {
     bool WindowShow = true;
     HWND window;
@@ -223,6 +225,7 @@ int main() {
         _getch();
         return 0;
     }
+    _getch();
     for_each(arr.begin(), arr.end(), [](char& c) {
         if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) c = c ^ 32;
         });
